@@ -105,23 +105,23 @@ body{
         overflow: visible;
     }
 
-    /* メインの猫 */
+    /* メインの猫 - 15%小さく */
     .google .cac-cat-main {
         position: absolute;
         top: calc(var(--vh)*60);
         left: 60vw;
-        height: calc(var(--vh)*45);
+        height: calc(var(--vh)*38.25);
         width: auto;
         z-index: 3;
         transform: translate(-50%, -50%);
         user-select: none;
     }
 
-    /* 看板 - メインの猫との相対位置を保持 */
+    /* 看板 - メインの猫との相対位置を保持、15%小さく */
     .google .cac-board {
         position: absolute;
         width: auto;
-        height: calc(var(--vh)*25);
+        height: calc(var(--vh)*21.25);
         z-index: 4;
         transform-origin: center bottom;
         user-select: none;
@@ -183,21 +183,23 @@ body{
         overflow: visible;
     }
 
+    /* メインの猫 - 15%小さく */
     .safari .cac-cat-main {
         position: absolute;
         top: 60svh;
         left: 60vw;
-        height: 45svh;
+        height: 38.25svh;
         width: auto;
         z-index: 3;
         transform: translate(-50%, -50%);
         user-select: none;
     }
 
+    /* 看板 - 15%小さく */
     .safari .cac-board {
         position: absolute;
         width: auto;
-        height: 25svh;
+        height: 21.25svh;
         z-index: 4;
         transform-origin: center bottom;
         user-select: none;
@@ -251,6 +253,163 @@ body{
     }
 }
 
+/* 大きめスマホ用（縦向き）- 429px〜600px */
+@media (min-width:429px) and (max-width:600px) and (orientation: portrait) {
+    /* Google用のスタイル */
+    .google .welcome {
+        height: calc(var(--vh)*100);
+        overflow: visible;
+    }
+
+    /* メインの猫 - 25%小さく */
+    .google .cac-cat-main {
+        position: absolute;
+        top: calc(var(--vh)*60);
+        left: 60vw;
+        height: calc(var(--vh)*33.75);
+        width: auto;
+        z-index: 3;
+        transform: translate(-50%, -50%);
+        user-select: none;
+    }
+
+    /* 看板 - メインの猫との相対位置を保持、25%小さく */
+    .google .cac-board {
+        position: absolute;
+        width: auto;
+        height: calc(var(--vh)*18.75);
+        z-index: 4;
+        transform-origin: center bottom;
+        user-select: none;
+    }
+
+    /* 左側の猫 */
+    .google .catA {
+        width: auto;
+        height: calc(var(--vh)*30);
+        position: absolute;
+        right: 0;
+        z-index: 3;
+        transform-origin: bottom center;
+        user-select: none;
+    }
+
+    /* 右側の猫 */
+    .google .catB {
+        width: auto;
+        height: calc(var(--vh)*40);
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 3;
+        transform-origin: bottom center;
+        user-select: none;
+    }
+
+    /* スポットライト */
+    .google .spotlightL {
+        position: absolute;
+        left: 5vw;
+        height: calc(var(--vh)*20);
+        width: calc(var(--vh)*20);
+    }
+
+    .google .spotlightR {
+        position: absolute;
+        right: 5vw;
+        height: calc(var(--vh)*20);
+        width: calc(var(--vh)*20);
+    }
+
+    /* フッターロゴ - 25%小さく */
+    .google .cac-logoL {
+        position: absolute;
+        top: calc(var(--vh)*85);
+        height: calc(var(--vh)*9.75);
+        width: auto;
+        z-index: 3;
+        left: 55vw;
+        transform: translateX(-50%);
+        display: block !important;
+        visibility: visible !important;
+    }
+
+    /* Safari用のスタイル */
+    .safari .welcome {
+        height: 100svh;
+        overflow: visible;
+    }
+
+    /* メインの猫 - 25%小さく */
+    .safari .cac-cat-main {
+        position: absolute;
+        top: 60svh;
+        left: 60vw;
+        height: 33.75svh;
+        width: auto;
+        z-index: 3;
+        transform: translate(-50%, -50%);
+        user-select: none;
+    }
+
+    /* 看板 - 25%小さく */
+    .safari .cac-board {
+        position: absolute;
+        width: auto;
+        height: 18.75svh;
+        z-index: 4;
+        transform-origin: center bottom;
+        user-select: none;
+    }
+
+    .safari .catA {
+        width: auto;
+        height: 30svh;
+        position: absolute;
+        right: 0;
+        z-index: 3;
+        transform-origin: bottom center;
+        user-select: none;
+    }
+
+    .safari .catB {
+        width: auto;
+        height: 40svh;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 3;
+        transform-origin: bottom center;
+        user-select: none;
+    }
+
+    .safari .spotlightL {
+        position: absolute;
+        left: 5vw;
+        height: 20svh;
+        width: 20svh;
+    }
+
+    .safari .spotlightR {
+        position: absolute;
+        right: 5vw;
+        height: 20svh;
+        width: 20svh;
+    }
+
+    /* フッターロゴ - 25%小さく */
+    .safari .cac-logoL {
+        position: absolute;
+        top: 85svh;
+        height: 9.75svh;
+        width: auto;
+        z-index: 3;
+        left: 55vw;
+        transform: translateX(-50%);
+        display: block !important;
+        visibility: visible !important;
+    }
+}
 
 /* 横向き(Googleからのスマホ・タブレットアクセスを除く)*/
 @media (min-width:428px) and (min-aspect-ratio: 4/3) {
@@ -338,7 +497,7 @@ body{
 }
 
 /* タブレット用（縦向き表示の時） - iPadサイズに対応 */
-@media (min-width:429px) and (max-width:1280px) and (orientation: portrait) {
+@media (min-width:601px) and (max-width:1280px) and (orientation: portrait) {
     /* Google用のスタイル */
     .google .welcome {
         height: calc(var(--vh)*100);

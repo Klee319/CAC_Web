@@ -1,0 +1,67 @@
+{
+  "activity": {
+    "schedules": [
+      {
+        "day": "水曜日",
+        "location": "10201情報処理教室",
+        "time": "13:15-19:30"
+      },
+      {
+        "day": "木曜日",
+        "location": "10202情報処理教室",
+        "time": "16:45-19:30"
+      }
+    ],
+    "image": "/about/state2.jpg"
+  },
+  "groups": [
+    {
+      "id": "programming",
+      "name": "Programing",
+      "omit": "P",
+      "description": "ゲームやシステムの制作",
+      "detailLink": "https://drive.google.com/file/d/1j7T_4WnvK2_v1Pnql69QrSxdXAuAl8d6/view?usp=sharing",
+      "image": "/about/state1.jpg"
+    },
+    {
+      "id": "cg",
+      "name": "CG",
+      "omit": "C",
+      "description": "Blender, Mayaなどを使った3Dモデルの制作",
+      "detailLink": "https://drive.google.com/file/d/1u-eOinEmJv83LldyxdJx3dppJV02gh1u/view?usp=sharing",
+      "image": "/about/state_CG.jpg"
+    },
+    {
+      "id": "graphic",
+      "name": "Graphic",
+      "omit": "G",
+      "description": "イラスト、アニメーションなどのデザインに関わるものの制作",
+      "detailLink": "https://drive.google.com/file/d/1skGF-XcmbFUwyt1PcDCKuJoNCR6wD00V/view?usp=sharing",
+      "image": "/about/state_grafic.jpg"
+    },
+    {
+      "id": "music",
+      "name": "Music",
+      "omit": "M",
+      "description": "BGM, 効果音やボカロなどの音楽、音源を制作",
+      "detailLink": "https://drive.google.com/file/d/1-uBKgkBWpiepk3tw6bN2YTGIOJCBS_8u/view?usp=sharing",
+      "image": "/about/state_music.jpg"
+    },
+    {
+      "id": "video",
+      "name": "Video",
+      "omit": "V",
+      "description": "MVなどの映像作品の制作",
+      "detailLink": "https://new.express.adobe.com/id/urn:aaid:sc:AP:0878c656-cf67-541e-8c36-ebccf8396cce?promoid=Z2G1FQKR&mv=other&learn=for-you&category=search",
+      "image": "/about/state_video.png"
+    },
+    {
+      "id": "scenario",
+      "name": "Scenario",
+      "omit": "S",
+      "description": "小説やノベルゲームのシナリオの制作",
+      "detailLink": "https://docs.google.com/presentation/d/1cdtyOHLxPyyC3PLS1H9F8wHHKWRQ6PFiiwdO_p91rMQ/edit#slide=id.g2c5129b0614_0_896",
+      "image": "/about/state_scenario.png"
+    }
+  ]
+}

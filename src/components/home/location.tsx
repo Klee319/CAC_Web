@@ -1,7 +1,10 @@
 import Image from "next/image";
 import "./location.css";
+import siteConfig from '@/config/siteConfig.json';
 
 export default function Location() {
+    const { schedules, image } = siteConfig.activity;
+
     return (
         <div className="pb-48">
             <h1 className="text-center location-title text-7xl font-moon">Location & Dates</h1>
@@ -10,17 +13,23 @@ export default function Location() {
             <div className="flex flex-wrap justify-center w-full">
                 <div>
                     <Image
-                        src="/about/state2.jpg"
+                        src={image}
                         alt="作業風景"
                         width={640}
                         height={360}
                     />
                 </div>
                 <div className="flex-row mx-28 date-content text-center">
-                    <p className="text-3xl font-zen-kurenaido pt-10 mb-1 date">水曜日</p>
-                    <p className="text-3xl font-zen-kurenaido place">10201情報処理教室 (13:15-19:30)</p>
-                    <p className="text-3xl font-zen-kurenaido pt-32 mb-1 date top-m">木曜日</p>
-                    <p className="text-3xl font-zen-kurenaido place">10202情報処理教室 (16:45-19:30)</p>
+                    {schedules.map((schedule, index) => (
+                        <div key={schedule.day}>
+                            <p className={`text-3xl font-zen-kurenaido ${index === 0 ? 'pt-10' : 'pt-32'} mb-1 date ${index > 0 ? 'top-m' : ''}`}>
+                                {schedule.day}
+                            </p>
+                            <p className="text-3xl font-zen-kurenaido place">
+                                {schedule.location} ({schedule.time})
+                            </p>
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>
