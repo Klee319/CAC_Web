@@ -29,7 +29,7 @@ export default function HomeHeader({ isDarkMode, toggleMode }: Props) {
             <div className="fixed w-full top-0 left-0 p-3 shadow-md z-50 header">
                 <div className="flex items-center justify-between">
                     {/* 左側: ロゴとスイッチボタン */}
-                    <div className="flex">
+                    <div className="flex items-center">
                         <div className="cac-logo h-auto w-[80px]">
                             <Image
                                 src="/logo/newCAC.png"
@@ -37,9 +37,10 @@ export default function HomeHeader({ isDarkMode, toggleMode }: Props) {
                                 width={460}
                                 height={192}
                                 className="block"
+                                style={isDarkMode ? { filter: 'hue-rotate(175deg) brightness(1.11) saturate(1.8)' } : undefined}
                             />
                         </div>
-                        <div className="dark-switch text-left text-[12px] font-moon pt-1">
+                        <div className="dark-switch text-left text-[12px] font-moon ml-2">
                             <SwitchLightDark isDarkMode={isDarkMode} toggleMode={toggleMode} />
                         </div>
                     </div>

@@ -59,6 +59,7 @@ export default function Welcome({ isDarkMode }: Props) {
                         height={192}
                         priority
                         className="cac-logoL del"
+                        style={isDarkMode ? { filter: 'hue-rotate(177deg) brightness(1.11) saturate(1.2)' } : undefined}
                     />
                 </div>
             </div>
