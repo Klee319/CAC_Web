@@ -79,7 +79,7 @@ export default function HomeHeader({ isDarkMode, toggleMode }: Props) {
             </div>
             {/* メニュー */}
             <div
-                className={`menu-bar top-[40px] fixed right-0 shadow-lg z-40 transition-all duration-300 ease-in-out overflow-hidden p-1 ${
+                className={`menu-bar fixed right-0 shadow-lg z-40 transition-all duration-300 ease-in-out overflow-hidden p-1 menu-top ${
                     isMenuOpen ? "translate-y-0 scale-100 opacity-100" : "-translate-y-full scale-80 opacity-90"
                 }`}
                 style={{

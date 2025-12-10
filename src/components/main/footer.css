@@ -8,11 +8,22 @@
     height: 7vh;
 }
 
+/* ダークモード時のCACロゴ色反転 */
+.dark .cac {
+    filter: invert(1) hue-rotate(180deg);
+}
+
+/* ダークモード時のXアイコン色反転 */
+.dark .x-icon {
+    filter: invert(1);
+}
+
 .text{
     font-size: 1.7vw;
     margin-left: 2vw;
 }
 
+/* 小さめスマホ（縦向き）- 〜428px */
 @media (max-width: 428px) {
     .logo{
         width: 100%;
@@ -31,15 +42,50 @@
         flex-direction: column;
         align-items: center;
     }
-    
+
     /* アイコンは常に横並びに */
-    .social > div {
+    .social-icons {
         flex-direction: row;
         margin-bottom: 10px;
+        margin-right: 0;
     }
-    
+
     .text{
         font-size: 15px;
+        margin-left: 0;
+        text-align: center;
+    }
+}
+
+/* 大きめスマホ用（縦向き）- 429px〜600px */
+@media (min-width:429px) and (max-width:600px) and (orientation: portrait) {
+    .logo{
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+    }
+
+    .cac{
+        width: 25vw;
+        height: auto;
+    }
+
+    .social{
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* アイコンは常に横並びに */
+    .social-icons {
+        flex-direction: row;
+        margin-bottom: 10px;
+        margin-right: 0;
+    }
+
+    .text{
+        font-size: 14px;
         margin-left: 0;
         text-align: center;
     }
@@ -51,7 +97,7 @@
 }
 
 /* タブレット用（縦向き表示の時） */
-@media (max-width:1280px) and (min-height:768px) and (orientation: portrait) {
+@media (min-width:601px) and (max-width:1280px) and (orientation: portrait) {
     /* 既存のスタイルを維持 */
 }
 

@@ -17,12 +17,12 @@ export default function Footer() {
                         height={100}
                         className="cac"
                     />
-                    <h1 className="font-zen-kurenaido text-color text">©電子計算機応用部</h1>
+                    <p className="font-zen-kurenaido text-color text">©電子計算機応用部</p>
                 </div>
 
                 {/* ソーシャルリンク */}
                 <div className="flex items-center social">
-                    <div className="flex flex-row items-center mr-4">
+                    <div className="flex flex-row items-center social-icons">
                         <a href="https://www.instagram.com/c_a_c_official" className="mr-4">
                             <Image
                                 src={insragramSvg}
@@ -42,7 +42,7 @@ export default function Footer() {
                             />
                         </a>
                     </div>
-                    <h1 className="font-zen-kurenaido text-color text">公式SNS/お問い合わせ</h1>
+                    <p className="font-zen-kurenaido text-color text">公式SNS/お問い合わせ</p>
                 </div>
             </div>
         </footer>

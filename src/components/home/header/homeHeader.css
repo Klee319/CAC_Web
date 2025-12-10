@@ -1,16 +1,21 @@
+/* メニューのtop位置（デフォルト - 小さめスマホ用） */
+.menu-top {
+    top: 56px; /* p-3 (12px*2) + ロゴ高さ約32px = 56px */
+}
 
 /* スマホ以下 */
 @media (max-width: 428px) {
     .nav-bar {
         display: none;
+    }
 
+    .menu-top {
+        top: 56px;
     }
 }
 
-
-
 /* スマホより大きい（小さめ表示)*/
-@media (min-width: 428px) {
+@media (min-width: 429px) {
     .cac-logo{
         width: 100px;
     }
@@ -19,6 +24,9 @@
     }
     .header{
         padding: 20px;
+    }
+    .menu-top {
+        top: 72px; /* padding 20px*2 + ロゴ高さ約32px = 72px */
     }
 }
 
