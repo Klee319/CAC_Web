@@ -1,6 +1,6 @@
 /* メニューのtop位置（デフォルト - 小さめスマホ用） */
 .menu-top {
-    top: 56px; /* p-3 (12px*2) + ロゴ高さ約32px = 56px */
+    top: 48px;
 }
 
 /* スマホ以下 */
@@ -10,7 +10,7 @@
     }
 
     .menu-top {
-        top: 56px;
+        top: 48px;
     }
 }
 
@@ -26,7 +26,7 @@
         padding: 20px;
     }
     .menu-top {
-        top: 72px; /* padding 20px*2 + ロゴ高さ約32px = 72px */
+        top: 64px;
     }
 }
 
