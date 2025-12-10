@@ -21,17 +21,19 @@ export default function Welcome({ isDarkMode }: Props) {
                     <div className="spotlightR"></div>
                     <ExportedImage
                         src="/home/welcome/cacCat1.png"
-                        width={100}
-                        height={100}
+                        width={300}
+                        height={400}
                         alt="Character"
                         className="catA del"
+                        loading="lazy"
                     />
                     <ExportedImage
                         src="/home/welcome/cacCat5.png"
-                        width={100}
-                        height={100}
+                        width={300}
+                        height={400}
                         alt="Character"
                         className="catB del"
+                        loading="lazy"
                     />
                 </div>
 
@@ -39,16 +41,16 @@ export default function Welcome({ isDarkMode }: Props) {
                     <ExportedImage
                         src="/home/welcome/backgroundBoard.png"
                         alt="イメージキャラクター"
-                        width={100}
-                        height={100}
-                        priority
+                        width={400}
+                        height={300}
                         className="cac-board del"
+                        loading="lazy"
                     />
                     <ExportedImage
                         src="/home/welcome/imageCAT.png"
                         alt="イメージキャラクター"
-                        width={100}
-                        height={100}
+                        width={500}
+                        height={600}
                         priority
                         className="cac-cat-main del"
                     />

@@ -17,6 +17,7 @@ export default function Location() {
                         alt="作業風景"
                         width={640}
                         height={360}
+                        loading="lazy"
                     />
                 </div>
                 <div className="flex-row mx-28 date-content text-center">

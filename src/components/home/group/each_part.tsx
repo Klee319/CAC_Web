@@ -24,6 +24,7 @@ export default function EachPart({ group, omit, description, link, image }: Each
                 width={550}
                 height={310}
                 className="w-full h-full object-cover transition-transform transform group-hover:scale-105 "
+                loading="lazy"
             />
             <a href={link} target="_blank" rel="noopener noreferrer">
                 <div className="absolute inset-0 bg-gray-900 bg-opacity-0 group-hover:bg-opacity-50 "></div>

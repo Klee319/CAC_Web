@@ -97,6 +97,7 @@ export default function About() {
                         width={520}
                         height={490}
                         className="object-contain"
+                        loading="lazy"
                     />
                 </div>
                 {/* テキスト部分 */}

@@ -167,7 +167,7 @@ body{
 
     .google .cac-logoL {
         position: absolute;
-        top: calc(var(--vh)*85);
+        top: calc(var(--vh)*80);
         height: auto;
         width: 80vw;
         z-index: 3;
@@ -242,7 +242,7 @@ body{
 
     .safari .cac-logoL {
         position: absolute;
-        top: 85svh;
+        top: 80svh;
         height: auto;
         width: 80vw;
         z-index: 3;
@@ -324,7 +324,7 @@ body{
     /* フッターロゴ - 横幅80vw */
     .google .cac-logoL {
         position: absolute;
-        top: calc(var(--vh)*85);
+        top: calc(var(--vh)*80);
         height: auto;
         width: 80vw;
         z-index: 3;
@@ -400,7 +400,7 @@ body{
     /* フッターロゴ - 横幅80vw */
     .safari .cac-logoL {
         position: absolute;
-        top: 85svh;
+        top: 80svh;
         height: auto;
         width: 80vw;
         z-index: 3;
