@@ -1,7 +1,7 @@
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-import Image from "next/image";
+import ExportedImage from "next-image-export-optimizer";
 import "./about.css";
 
 // 各ページの説明文データ
@@ -91,7 +91,7 @@ export default function About() {
             <div className="pt-8 flex items-center justify-between flex-row about-content">
                 {/* 画像部分 */}
                 <div className="mt-8 md:mt-0 items center about-image">
-                    <Image
+                    <ExportedImage
                         src="/about/state_board.jpg"
                         alt="作業風景"
                         width={520}

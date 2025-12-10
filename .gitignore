@@ -35,3 +35,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# next-image-export-optimizer
+**/nextImageExportOptimizer/
+public/next-image-export-optimizer-hashes.json
+
+# misc temp files
+public/nul
+home/
+home.zip

@@ -1,4 +1,4 @@
-import Image from "next/image";
+import ExportedImage from "next-image-export-optimizer";
 import insragramSvg from '../../../public/logo/Instagram_logo_2016.svg';
 import XSvg from "../../../public/logo/X_logo_2023.svg";
 import "./footer.css";
@@ -10,7 +10,7 @@ export default function Footer() {
             <div className="flex flex-row items-center justify-around space-y-0">
                 {/* ロゴとタイトル */}
                 <div className="flex items-center logo">
-                    <Image
+                    <ExportedImage
                         src="/logo/newCAC.png"
                         alt="C.A.C. logo"
                         width={220}
@@ -24,7 +24,7 @@ export default function Footer() {
                 <div className="flex items-center social">
                     <div className="flex flex-row items-center social-icons">
                         <a href="https://www.instagram.com/c_a_c_official" className="mr-4">
-                            <Image
+                            <ExportedImage
                                 src={insragramSvg}
                                 alt="Instagram"
                                 width={40}
@@ -33,7 +33,7 @@ export default function Footer() {
                             />
                         </a>
                         <a href="https://twitter.com/c_a_c_official">
-                            <Image
+                            <ExportedImage
                                 src={XSvg}
                                 alt="X"
                                 width={40}

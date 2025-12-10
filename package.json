@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && next-image-export-optimizer",
+    "build:images": "next-image-export-optimizer",
     "start": "next start",
     "lint": "next lint"
   },
@@ -16,7 +17,8 @@
     "next-videos": "1.4.1",
     "react": "^18",
     "react-anchor-link-smooth-scroll-v2": "^2.0.1",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "sharp": "^0.34.5"
   },
   "devDependencies": {
     "@types/node": "^20",

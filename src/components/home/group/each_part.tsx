@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import ExportedImage from 'next-image-export-optimizer';
 
 // EachPartコンポーネントのプロパティの型定義
 interface EachPartProps {
@@ -18,7 +18,7 @@ export default function EachPart({ group, omit, description, link, image }: Each
                 <p className="pb-2">{description}</p>
             </div>
         <div className="relative overflow-hidden">
-            <Image
+            <ExportedImage
                 src={image}
                 alt={group}
                 width={550}

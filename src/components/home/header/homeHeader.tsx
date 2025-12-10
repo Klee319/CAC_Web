@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Image from "next/image";
+import ExportedImage from "next-image-export-optimizer";
 import "./homeHeader.css";
 import SwitchLightDark from '../../main/switchLightDark';
 
@@ -31,7 +31,7 @@ export default function HomeHeader({ isDarkMode, toggleMode }: Props) {
                     {/* 左側: ロゴとスイッチボタン */}
                     <div className="flex items-center">
                         <div className="cac-logo h-auto w-[80px]">
-                            <Image
+                            <ExportedImage
                                 src="/logo/newCAC.png"
                                 alt="C.A.C. ロゴ"
                                 width={460}

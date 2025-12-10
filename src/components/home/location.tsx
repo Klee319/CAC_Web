@@ -1,4 +1,4 @@
-import Image from "next/image";
+import ExportedImage from "next-image-export-optimizer";
 import "./location.css";
 import siteConfig from '@/config/siteConfig.json';
 
@@ -12,7 +12,7 @@ export default function Location() {
             <div className="w-2/3 mx-auto h-0.5 border-color-dark mb-20"></div>
             <div className="flex flex-wrap justify-center w-full">
                 <div>
-                    <Image
+                    <ExportedImage
                         src={image}
                         alt="作業風景"
                         width={640}

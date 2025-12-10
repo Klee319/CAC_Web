@@ -1,4 +1,4 @@
-import Image from "next/image";
+import ExportedImage from "next-image-export-optimizer";
 import "./welcome.css";
 import React from 'react';
 import WelcomeJS from "@/components/home/welcome/welcomeJS";
@@ -19,14 +19,14 @@ export default function Welcome({ isDarkMode }: Props) {
                 <div className="animation-container">
                     <div className="spotlightL"></div>
                     <div className="spotlightR"></div>
-                    <Image
+                    <ExportedImage
                         src="/home/welcome/cacCat1.png"
                         width={100}
                         height={100}
                         alt="Character"
                         className="catA del"
                     />
-                    <Image
+                    <ExportedImage
                         src="/home/welcome/cacCat5.png"
                         width={100}
                         height={100}
@@ -36,7 +36,7 @@ export default function Welcome({ isDarkMode }: Props) {
                 </div>
 
                 <div className="relative flex flex-col items-center justify-center content">
-                    <Image
+                    <ExportedImage
                         src="/home/welcome/backgroundBoard.png"
                         alt="イメージキャラクター"
                         width={100}
@@ -44,7 +44,7 @@ export default function Welcome({ isDarkMode }: Props) {
                         priority
                         className="cac-board del"
                     />
-                    <Image
+                    <ExportedImage
                         src="/home/welcome/imageCAT.png"
                         alt="イメージキャラクター"
                         width={100}
@@ -52,7 +52,7 @@ export default function Welcome({ isDarkMode }: Props) {
                         priority
                         className="cac-cat-main del"
                     />
-                    <Image
+                    <ExportedImage
                         src="/home/welcome/CACmainLogo.png"
                         alt="C.A.C. ロゴ"
                         width={460}

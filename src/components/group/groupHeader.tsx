@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import Image from "next/image";
+import ExportedImage from "next-image-export-optimizer";
 // @ts-ignore
 import cacLogo from '../../../public/logo/newCAC.png';
 import SwitchLightDark from "@/components/main/switchLightDark";
@@ -19,7 +19,7 @@ export default function GroupHeader() {
                 <div className="flex items-center justify-between">
                     {/* 左側: ロゴとスイッチボタン */}
                     <div className="flex items-center space-x-4">
-                        <Image src={cacLogo} alt="C.A.C. logo" style={{ width: 100, height: 'auto' }} className="block" />
+                        <ExportedImage src={cacLogo} alt="C.A.C. logo" style={{ width: 100, height: 'auto' }} className="block" />
                         <div className="text-1xl font-moon">
                             <SwitchLightDark isDarkMode={isDarkMode} toggleMode={toggleMode} />
                         </div>
