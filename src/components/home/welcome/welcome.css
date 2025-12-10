@@ -168,10 +168,10 @@ body{
     .google .cac-logoL {
         position: absolute;
         top: calc(var(--vh)*85);
-        height: calc(var(--vh)*13);
-        width: auto;
+        height: auto;
+        width: 80vw;
         z-index: 3;
-        left: 55vw;
+        left: 50vw;
         transform: translateX(-50%);
         display: block !important;
         visibility: visible !important;
@@ -243,10 +243,10 @@ body{
     .safari .cac-logoL {
         position: absolute;
         top: 85svh;
-        height: 13svh;
-        width: auto;
+        height: auto;
+        width: 80vw;
         z-index: 3;
-        left: 50vw; /* 55vw → 50vw (5%左に移動) */
+        left: 50vw;
         transform: translateX(-50%);
         display: block !important;
         visibility: visible !important;
@@ -321,14 +321,14 @@ body{
         width: calc(var(--vh)*20);
     }
 
-    /* フッターロゴ - 25%小さく */
+    /* フッターロゴ - 横幅80vw */
     .google .cac-logoL {
         position: absolute;
         top: calc(var(--vh)*85);
-        height: calc(var(--vh)*9.75);
-        width: auto;
+        height: auto;
+        width: 80vw;
         z-index: 3;
-        left: 55vw;
+        left: 50vw;
         transform: translateX(-50%);
         display: block !important;
         visibility: visible !important;
@@ -397,14 +397,14 @@ body{
         width: 20svh;
     }
 
-    /* フッターロゴ - 25%小さく */
+    /* フッターロゴ - 横幅80vw */
     .safari .cac-logoL {
         position: absolute;
         top: 85svh;
-        height: 9.75svh;
-        width: auto;
+        height: auto;
+        width: 80vw;
         z-index: 3;
-        left: 55vw;
+        left: 50vw;
         transform: translateX(-50%);
         display: block !important;
         visibility: visible !important;
