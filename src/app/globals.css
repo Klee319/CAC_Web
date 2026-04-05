@@ -49,7 +49,7 @@
 .body {
   background-color: var(--background-color);
   color: var(--text-color) !important;
-  overflow: hidden; /* 不要なスクロールを防ぐ */
+  overflow: hidden;
 }
 
 footer {
@@ -91,8 +91,8 @@ a:hover {
   color: var(--link-hover-color);
 }
 
-*{
-  scroll-margin-top: 7rem; /* ヘッダーの高さ分だけマージンを追加 */
+[id] {
+  scroll-margin-top: 7rem;
 }
 
 html {
@@ -115,11 +115,11 @@ html {
   width: 100%;
   height: 100%;
   background: var(--background-color);
-  opacity: 1; /* 背景パターンの透明度 */
+  opacity: 1;
   z-index: 0;
 }
 
-/* 半透明のオーバーレイ（stripe要素の中に重ねる） */
+/* 半透明のオーバーレイ */
 .stripe::before {
   content: '';
   position: absolute;
@@ -127,8 +127,8 @@ html {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--over-lay); /* 半透明の白色 */
-  pointer-events: none; /* クリックイベントを透過 */
+  background-color: var(--over-lay);
+  pointer-events: none;
   z-index: 1;
 }
 
@@ -137,9 +137,3 @@ html {
   position: relative;
   z-index: 3;
 }
-
-
-
-
-
-

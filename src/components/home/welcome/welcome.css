@@ -1,55 +1,59 @@
-@import url("https://fonts.googleapis.com/earlyaccess/hannari.css");
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-
-
-body{
+/*
+ * --svh: 1svhに相当するCSS変数
+ * - google (Chrome等): JSで計算した --vh を使用（モバイルブラウザのURL bar対策）
+ * - safari: ネイティブの svh ユニットを使用
+ * - その他(Firefox等): svh フォールバック
+ */
+body {
     --vh: 1vh;
-
+    --svh: 1svh;
 }
+body.google {
+    --svh: var(--vh);
+}
+body.safari {
+    --svh: 1svh;
+}
+
 :root{
     --welcomeView:
             repeating-radial-gradient(circle at top right,
-            #003399 0%, #003399 20%,  /* 深い青 */
-            #6699ff 20%, #6699ff 40%,  /* 明るい青 */
-            #cce6ff 40%, #cce6ff 60%,  /* 淡い青 */
-            #e289fa 60%, #e09ff6 80%,  /* 白 */
-            #cce6ff 80%, #cce6ff 90%,  /* 淡い青 */
-            #003399 90%, #003399 100%  /* 深い青 */
+            #003399 0%, #003399 20%,
+            #6699ff 20%, #6699ff 40%,
+            #cce6ff 40%, #cce6ff 60%,
+            #e289fa 60%, #e09ff6 80%,
+            #cce6ff 80%, #cce6ff 90%,
+            #003399 90%, #003399 100%
             ), repeating-radial-gradient(circle at bottom left,
-            #003399 0%, #003399 20%,  /* 深い青 */
-            #6699ff 20%, #6699ff 40%,  /* 明るい青 */
-            #cce6ff 40%, #cce6ff 60%,  /* 淡い青 */
-            #d588ec 60%, #d88ef1 80%,  /* 白 */
-            #cce6ff 80%, #cce6ff 90%,  /* 淡い青 */
-            #003399 90%, #003399 100%  /* 深い青 */
+            #003399 0%, #003399 20%,
+            #6699ff 20%, #6699ff 40%,
+            #cce6ff 40%, #cce6ff 60%,
+            #d588ec 60%, #d88ef1 80%,
+            #cce6ff 80%, #cce6ff 90%,
+            #003399 90%, #003399 100%
             ),repeating-linear-gradient(135deg, transparent, transparent 400px, rgb(3, 51, 148) 400px, rgb(3, 51, 148) 700px )
             ,repeating-linear-gradient(45deg, transparent, transparent 400px, rgb(145, 254, 255) 400px, rgb(145, 254, 255) 1000px );
 }
 .dark-mode{
     --welcomeView:
             repeating-radial-gradient(circle at top right,
-            #ff6600 0%, #ff6600 20%, /* 鮮やかなオレンジ */
-            #ff9933 20%, #ff9933 40%, /* 明るいオレンジ */
-            #ffd699 40%, #ffd699 60%, /* 淡いオレンジ */
-            #ffcc99 60%, #ff9966 80%, /* 柔らかいピンクオレンジ */
-            #ffd699 80%, #ffd699 90%, /* 淡いオレンジ */
-            #ff6600 90%, #ff6600 100% /* 鮮やかなオレンジ */
+            #ff6600 0%, #ff6600 20%,
+            #ff9933 20%, #ff9933 40%,
+            #ffd699 40%, #ffd699 60%,
+            #ffcc99 60%, #ff9966 80%,
+            #ffd699 80%, #ffd699 90%,
+            #ff6600 90%, #ff6600 100%
             ),
             repeating-radial-gradient(circle at bottom left,
-            #ff6600 0%, #ff6600 20%, /* 鮮やかなオレンジ */
-            #ff9933 20%, #ff9933 40%, /* 明るいオレンジ */
-            #ffd699 40%, #ffd699 60%, /* 淡いオレンジ */
-            #ffcc99 60%, #ff9966 80%, /* 柔らかいピンクオレンジ */
-            #ffd699 80%, #ffd699 90%, /* 淡いオレンジ */
-            #ff6600 90%, #ff6600 100% /* 鮮やかなオレンジ */
+            #ff6600 0%, #ff6600 20%,
+            #ff9933 20%, #ff9933 40%,
+            #ffd699 40%, #ffd699 60%,
+            #ffcc99 60%, #ff9966 80%,
+            #ffd699 80%, #ffd699 90%,
+            #ff6600 90%, #ff6600 100%
             ),
             repeating-linear-gradient(135deg, transparent, transparent 400px, rgb(255, 102, 0) 400px, rgb(255, 102, 0) 700px),
             repeating-linear-gradient(45deg, transparent, transparent 400px, rgb(255, 204, 153) 400px, rgb(255, 204, 153) 1000px);
-
 }
 
 .white-layer{
@@ -63,8 +67,6 @@ body{
     opacity: 1;
 }
 
-
-
 .welcome-background{
     top:0;
     left:0;
@@ -72,10 +74,8 @@ body{
     height: 100%;
     background: var(--welcomeView);
     background-blend-mode: overlay;
-    /*透明度を設定*/
     opacity: 0.5;
 }
-
 
 /* Canvasの設定 */
 #spotlightCanvas {
@@ -85,7 +85,7 @@ body{
     width: 100%;
     height: 100%;
     z-index: 5;
-    pointer-events: none; /* クリックを通過 */
+    pointer-events: none;
 }
 
 /* 非表示のクラス */
@@ -98,39 +98,38 @@ body{
 }
 
 
-/*スマホ*/
+/* ============================================
+   スマホ（〜428px）
+   ============================================ */
 @media (max-width: 428px) {
-    .google .welcome {
-        height: calc(var(--vh)*100);
+    .welcome {
+        height: calc(var(--svh) * 100);
         overflow: visible;
     }
 
-    /* メインの猫 - 15%小さく */
-    .google .cac-cat-main {
+    .cac-cat-main {
         position: absolute;
-        top: calc(var(--vh)*60);
+        top: calc(var(--svh) * 60);
         left: 60vw;
-        height: calc(var(--vh)*38.25);
+        height: calc(var(--svh) * 38.25);
         width: auto;
         z-index: 3;
         transform: translate(-50%, -50%);
         user-select: none;
     }
 
-    /* 看板 - メインの猫との相対位置を保持、15%小さく */
-    .google .cac-board {
+    .cac-board {
         position: absolute;
         width: auto;
-        height: calc(var(--vh)*21.25);
+        height: calc(var(--svh) * 21.25);
         z-index: 4;
         transform-origin: center bottom;
         user-select: none;
     }
 
-    /* 左側の猫 */
-    .google .catA {
+    .catA {
         width: auto;
-        height: calc(var(--vh)*30);
+        height: calc(var(--svh) * 30);
         position: absolute;
         right: 0;
         z-index: 3;
@@ -138,10 +137,9 @@ body{
         user-select: none;
     }
 
-    /* 右側の猫 */
-    .google .catB {
+    .catB {
         width: auto;
-        height: calc(var(--vh)*40);
+        height: calc(var(--svh) * 40);
         position: absolute;
         left: 0;
         top: 0;
@@ -150,99 +148,23 @@ body{
         user-select: none;
     }
 
-    /* スポットライト */
-    .google .spotlightL {
+    .spotlightL {
         position: absolute;
         left: 5vw;
-        height: calc(var(--vh)*20);
-        width: calc(var(--vh)*20);
+        height: calc(var(--svh) * 20);
+        width: calc(var(--svh) * 20);
     }
 
-    .google .spotlightR {
+    .spotlightR {
         position: absolute;
         right: 5vw;
-        height: calc(var(--vh)*20);
-        width: calc(var(--vh)*20);
+        height: calc(var(--svh) * 20);
+        width: calc(var(--svh) * 20);
     }
 
-    .google .cac-logoL {
+    .cac-logoL {
         position: absolute;
-        top: calc(var(--vh)*80);
-        height: auto;
-        width: 80vw;
-        z-index: 3;
-        left: 50vw;
-        transform: translateX(-50%);
-        display: block !important;
-        visibility: visible !important;
-    }
-
-    /* Safari用のスタイル */
-    .safari .welcome {
-        height: 100svh;
-        overflow: visible;
-    }
-
-    /* メインの猫 - 15%小さく */
-    .safari .cac-cat-main {
-        position: absolute;
-        top: 60svh;
-        left: 60vw;
-        height: 38.25svh;
-        width: auto;
-        z-index: 3;
-        transform: translate(-50%, -50%);
-        user-select: none;
-    }
-
-    /* 看板 - 15%小さく */
-    .safari .cac-board {
-        position: absolute;
-        width: auto;
-        height: 21.25svh;
-        z-index: 4;
-        transform-origin: center bottom;
-        user-select: none;
-    }
-
-    .safari .catA {
-        width: auto;
-        height: 30svh;
-        position: absolute;
-        right: 0;
-        z-index: 3;
-        transform-origin: bottom center;
-        user-select: none;
-    }
-
-    .safari .catB {
-        width: auto;
-        height: 40svh;
-        position: absolute;
-        left: 0;
-        top: 0;
-        z-index: 3;
-        transform-origin: bottom center;
-        user-select: none;
-    }
-
-    .safari .spotlightL {
-        position: absolute;
-        left: 5vw;
-        height: 20svh;
-        width: 20svh;
-    }
-
-    .safari .spotlightR {
-        position: absolute;
-        right: 5vw;
-        height: 20svh;
-        width: 20svh;
-    }
-
-    .safari .cac-logoL {
-        position: absolute;
-        top: 80svh;
+        top: calc(var(--svh) * 80);
         height: auto;
         width: 80vw;
         z-index: 3;
@@ -253,40 +175,38 @@ body{
     }
 }
 
-/* 大きめスマホ用（縦向き）- 429px〜600px */
+/* ============================================
+   大きめスマホ用（縦向き）- 429px〜600px
+   ============================================ */
 @media (min-width:429px) and (max-width:600px) and (orientation: portrait) {
-    /* Google用のスタイル */
-    .google .welcome {
-        height: calc(var(--vh)*100);
+    .welcome {
+        height: calc(var(--svh) * 100);
         overflow: visible;
     }
 
-    /* メインの猫 - 25%小さく */
-    .google .cac-cat-main {
+    .cac-cat-main {
         position: absolute;
-        top: calc(var(--vh)*60);
+        top: calc(var(--svh) * 60);
         left: 60vw;
-        height: calc(var(--vh)*33.75);
+        height: calc(var(--svh) * 33.75);
         width: auto;
         z-index: 3;
         transform: translate(-50%, -50%);
         user-select: none;
     }
 
-    /* 看板 - メインの猫との相対位置を保持、25%小さく */
-    .google .cac-board {
+    .cac-board {
         position: absolute;
         width: auto;
-        height: calc(var(--vh)*18.75);
+        height: calc(var(--svh) * 18.75);
         z-index: 4;
         transform-origin: center bottom;
         user-select: none;
     }
 
-    /* 左側の猫 */
-    .google .catA {
+    .catA {
         width: auto;
-        height: calc(var(--vh)*30);
+        height: calc(var(--svh) * 30);
         position: absolute;
         right: 0;
         z-index: 3;
@@ -294,10 +214,9 @@ body{
         user-select: none;
     }
 
-    /* 右側の猫 */
-    .google .catB {
+    .catB {
         width: auto;
-        height: calc(var(--vh)*40);
+        height: calc(var(--svh) * 40);
         position: absolute;
         left: 0;
         top: 0;
@@ -306,101 +225,23 @@ body{
         user-select: none;
     }
 
-    /* スポットライト */
-    .google .spotlightL {
+    .spotlightL {
         position: absolute;
         left: 5vw;
-        height: calc(var(--vh)*20);
-        width: calc(var(--vh)*20);
+        height: calc(var(--svh) * 20);
+        width: calc(var(--svh) * 20);
     }
 
-    .google .spotlightR {
+    .spotlightR {
         position: absolute;
         right: 5vw;
-        height: calc(var(--vh)*20);
-        width: calc(var(--vh)*20);
+        height: calc(var(--svh) * 20);
+        width: calc(var(--svh) * 20);
     }
 
-    /* フッターロゴ - 横幅80vw */
-    .google .cac-logoL {
+    .cac-logoL {
         position: absolute;
-        top: calc(var(--vh)*80);
-        height: auto;
-        width: 80vw;
-        z-index: 3;
-        left: 50vw;
-        transform: translateX(-50%);
-        display: block !important;
-        visibility: visible !important;
-    }
-
-    /* Safari用のスタイル */
-    .safari .welcome {
-        height: 100svh;
-        overflow: visible;
-    }
-
-    /* メインの猫 - 25%小さく */
-    .safari .cac-cat-main {
-        position: absolute;
-        top: 60svh;
-        left: 60vw;
-        height: 33.75svh;
-        width: auto;
-        z-index: 3;
-        transform: translate(-50%, -50%);
-        user-select: none;
-    }
-
-    /* 看板 - 25%小さく */
-    .safari .cac-board {
-        position: absolute;
-        width: auto;
-        height: 18.75svh;
-        z-index: 4;
-        transform-origin: center bottom;
-        user-select: none;
-    }
-
-    .safari .catA {
-        width: auto;
-        height: 30svh;
-        position: absolute;
-        right: 0;
-        z-index: 3;
-        transform-origin: bottom center;
-        user-select: none;
-    }
-
-    .safari .catB {
-        width: auto;
-        height: 40svh;
-        position: absolute;
-        left: 0;
-        top: 0;
-        z-index: 3;
-        transform-origin: bottom center;
-        user-select: none;
-    }
-
-    .safari .spotlightL {
-        position: absolute;
-        left: 5vw;
-        height: 20svh;
-        width: 20svh;
-    }
-
-    .safari .spotlightR {
-        position: absolute;
-        right: 5vw;
-        height: 20svh;
-        width: 20svh;
-    }
-
-    /* フッターロゴ - 横幅80vw */
-    .safari .cac-logoL {
-        position: absolute;
-        top: 80svh;
+        top: calc(var(--svh) * 80);
         height: auto;
         width: 80vw;
         z-index: 3;
@@ -411,10 +252,12 @@ body{
     }
 }
 
-/* 横向き(Googleからのスマホ・タブレットアクセスを除く)*/
+/* ============================================
+   横向き（スマホ・タブレットアクセスを除く）
+   ============================================ */
 @media (min-width:428px) and (min-aspect-ratio: 4/3) {
     .content{
-        width: 100%; /* 親要素の幅を100%に */
+        width: 100%;
         height: 100vh;
         margin: auto;
     }
@@ -435,7 +278,7 @@ body{
         height: 65%;
         width: auto;
         z-index: 3;
-        transform: translate(-50%, -50%); /* 中心に配置するための調整 */
+        transform: translate(-50%, -50%);
         user-select: none;
     }
 
@@ -452,7 +295,6 @@ body{
         visibility: visible !important;
     }
 
-    /* キャラクターのスタイル */
     .catA {
         width: auto;
         height: 50vh;
@@ -476,60 +318,57 @@ body{
     .spotlightL {
         position: absolute;
         left: 5vh;
-        height: 30vh; /* 高さの明示的な指定 */
-        width: 30vh; /* 幅の明示的な指定 */
+        height: 30vh;
+        width: 30vh;
     }
 
     .spotlightR {
         position: absolute;
         right: 8vh;
-        height: 40vh; /* 高さの明示的な指定 */
-        width: 40vh; /* 幅の明示的な指定 */
+        height: 40vh;
+        width: 40vh;
     }
 
     .spotlightMain {
         margin-left: auto;
         margin-top: 10vh;
-        height: 100vh; /* 高さの明示的な指定 */
-        width: 100vh; /* 幅の明示的な指定 */
-
+        height: 100vh;
+        width: 100vh;
     }
 }
 
-/* タブレット用（縦向き表示の時） - iPadサイズに対応 */
+/* ============================================
+   タブレット用（縦向き表示の時）- iPadサイズに対応
+   ============================================ */
 @media (min-width:601px) and (max-width:1280px) and (orientation: portrait) {
-    /* Google用のスタイル */
-    .google .welcome {
-        height: calc(var(--vh)*100);
+    .welcome {
+        height: calc(var(--svh) * 100);
         overflow: visible;
     }
 
-    /* メインの猫 - 7%左に移動 */
-    .google .cac-cat-main {
+    .cac-cat-main {
         position: absolute;
-        top: calc(var(--vh)*60);
-        left: 53vw; /* 60vw → 53vw (7%左に移動) */
-        height: calc(var(--vh)*45);
+        top: calc(var(--svh) * 60);
+        left: 53vw;
+        height: calc(var(--svh) * 45);
         width: auto;
         z-index: 3;
         transform: translate(-50%, -50%);
         user-select: none;
     }
 
-    /* 看板 - メインの猫との相対位置を保持 */
-    .google .cac-board {
+    .cac-board {
         position: absolute;
         width: auto;
-        height: calc(var(--vh)*25);
+        height: calc(var(--svh) * 25);
         z-index: 4;
         transform-origin: center bottom;
         user-select: none;
     }
 
-    /* 左側の猫 */
-    .google .catA {
+    .catA {
         width: auto;
-        height: calc(var(--vh)*30);
+        height: calc(var(--svh) * 30);
         position: absolute;
         right: 0;
         z-index: 3;
@@ -537,10 +376,9 @@ body{
         user-select: none;
     }
 
-    /* 右側の猫 */
-    .google .catB {
+    .catB {
         width: auto;
-        height: calc(var(--vh)*40);
+        height: calc(var(--svh) * 40);
         position: absolute;
         left: 0;
         top: 0;
@@ -549,141 +387,65 @@ body{
         user-select: none;
     }
 
-    /* スポットライト */
-    .google .spotlightL {
+    .spotlightL {
         position: absolute;
         left: 5vw;
-        height: calc(var(--vh)*20);
-        width: calc(var(--vh)*20);
+        height: calc(var(--svh) * 20);
+        width: calc(var(--svh) * 20);
     }
 
-    .google .spotlightR {
+    .spotlightR {
         position: absolute;
         right: 5vw;
-        height: calc(var(--vh)*20);
-        width: calc(var(--vh)*20);
+        height: calc(var(--svh) * 20);
+        width: calc(var(--svh) * 20);
     }
 
-    .google .cac-logoL {
+    .cac-logoL {
         position: absolute;
-        top: calc(var(--vh)*85);
-        height: calc(var(--vh)*13);
+        top: calc(var(--svh) * 85);
+        height: calc(var(--svh) * 13);
         width: auto;
         z-index: 3;
-        left: 50vw; /* 55vw → 50vw (5%左に移動) */
-        transform: translateX(-50%);
-        display: block !important;
-        visibility: visible !important;
-    }
-
-    /* Safari用のスタイル */
-    .safari .welcome {
-        height: 100svh;
-        overflow: visible;
-    }
-
-    .safari .cac-cat-main {
-        position: absolute;
-        top: 60svh;
-        left: 53vw; /* 60vw → 53vw (7%左に移動) */
-        height: 45svh;
-        width: auto;
-        z-index: 3;
-        transform: translate(-50%, -50%);
-        user-select: none;
-    }
-
-    .safari .cac-board {
-        position: absolute;
-        width: auto;
-        height: 25svh;
-        z-index: 4;
-        transform-origin: center bottom;
-        user-select: none;
-    }
-
-    .safari .catA {
-        width: auto;
-        height: 30svh;
-        position: absolute;
-        right: 0;
-        z-index: 3;
-        transform-origin: bottom center;
-        user-select: none;
-    }
-
-    .safari .catB {
-        width: auto;
-        height: 40svh;
-        position: absolute;
-        left: 0;
-        top: 0;
-        z-index: 3;
-        transform-origin: bottom center;
-        user-select: none;
-    }
-
-    .safari .spotlightL {
-        position: absolute;
-        left: 5vw;
-        height: 20svh;
-        width: 20svh;
-    }
-
-    .safari .spotlightR {
-        position: absolute;
-        right: 5vw;
-        height: 20svh;
-        width: 20svh;
-    }
-
-    .safari .cac-logoL {
-        position: absolute;
-        top: 85svh;
-        height: 13svh;
-        width: auto;
-        z-index: 3;
-        left: 50vw; /* 55vw → 50vw (5%左に移動) */
+        left: 50vw;
         transform: translateX(-50%);
         display: block !important;
         visibility: visible !important;
     }
 }
 
-/* iPad Pro用（縦向き表示の時） - 大きいiPadに対応 */
+/* ============================================
+   iPad Pro用（縦向き表示の時）- 大きいiPadに対応
+   ============================================ */
 @media (min-width:1024px) and (max-width:1280px) and (orientation: portrait) {
-    /* Google用のスタイル */
-    .google .welcome {
-        height: calc(var(--vh)*100);
+    .welcome {
+        height: calc(var(--svh) * 100);
         overflow: visible;
     }
 
-    /* メインの猫 - 少し大きめに、7%左に移動 */
-    .google .cac-cat-main {
+    .cac-cat-main {
         position: absolute;
-        top: calc(var(--vh)*60);
-        left: 53vw; /* 60vw → 53vw (7%左に移動) */
-        height: calc(var(--vh)*50); /* 少し大きく */
+        top: calc(var(--svh) * 60);
+        left: 53vw;
+        height: calc(var(--svh) * 50);
         width: auto;
         z-index: 3;
         transform: translate(-50%, -50%);
         user-select: none;
     }
 
-    /* 看板 - メインの猫との相対位置を保持 */
-    .google .cac-board {
+    .cac-board {
         position: absolute;
         width: auto;
-        height: calc(var(--vh)*28); /* 少し大きく */
+        height: calc(var(--svh) * 28);
         z-index: 4;
         transform-origin: center bottom;
         user-select: none;
     }
 
-    /* 左側の猫 */
-    .google .catA {
+    .catA {
         width: auto;
-        height: calc(var(--vh)*35); /* 少し大きく */
+        height: calc(var(--svh) * 35);
         position: absolute;
         right: 0;
         z-index: 3;
@@ -691,57 +453,9 @@ body{
         user-select: none;
     }
 
-    /* 右側の猫 */
-    .google .catB {
+    .catB {
         width: auto;
-        height: calc(var(--vh)*45); /* 少し大きく */
-        position: absolute;
-        left: 0;
-        top: 0;
-        z-index: 3;
-        transform-origin: bottom center;
-        user-select: none;
-    }
-
-    /* Safari用のスタイル */
-    .safari .welcome {
-        height: 100svh;
-        overflow: visible;
-    }
-
-    .safari .cac-cat-main {
-        position: absolute;
-        top: 60svh;
-        left: 53vw; /* 60vw → 53vw (7%左に移動) */
-        height: 50svh; /* 少し大きく */
-        width: auto;
-        z-index: 3;
-        transform: translate(-50%, -50%);
-        user-select: none;
-    }
-
-    .safari .cac-board {
-        position: absolute;
-        width: auto;
-        height: 28svh; /* 少し大きく */
-        z-index: 4;
-        transform-origin: center bottom;
-        user-select: none;
-    }
-
-    .safari .catA {
-        width: auto;
-        height: 35svh; /* 少し大きく */
-        position: absolute;
-        right: 0;
-        z-index: 3;
-        transform-origin: bottom center;
-        user-select: none;
-    }
-
-    .safari .catB {
-        width: auto;
-        height: 45svh; /* 少し大きく */
+        height: calc(var(--svh) * 45);
         position: absolute;
         left: 0;
         top: 0;
@@ -751,124 +465,61 @@ body{
     }
 }
 
-
-/* スマホ（横向き表示の時（高さ不足）) */
+/* ============================================
+   スマホ（横向き表示の時（高さ不足））
+   ============================================ */
 @media (max-height: 428px){
-    .google .welcome {
-        height: calc(var(--vh)*100);
+    .welcome {
+        height: calc(var(--svh) * 100);
         overflow: visible;
     }
 
-    /* メインの猫 */
-    .google .cac-cat-main {
+    .cac-cat-main {
         position: absolute;
-        top: 45vh;
+        top: calc(var(--svh) * 45);
         left: 52vw;
-        height: 65vh;
+        height: calc(var(--svh) * 65);
         width: auto;
         z-index: 3;
         transform: translate(-50%, -50%);
         user-select: none;
     }
 
-    /* 看板 - メインの猫との相対位置を保持 */
-    .google .cac-board {
+    .cac-board {
         position: absolute;
         width: auto;
-        height: 35vh;
+        height: calc(var(--svh) * 35);
         z-index: 4;
         transform-origin: center bottom;
         user-select: none;
     }
 
-    /* 左側の猫 */
-    .google .catA {
+    .catA {
         width: auto;
-        height: 50vh;
+        height: calc(var(--svh) * 50);
         position: absolute;
         right: 6vw;
-        top: -20vh;
+        top: calc(var(--svh) * -20);
         z-index: 3;
         transform-origin: bottom center;
         user-select: none;
     }
 
-    /* 右側の猫 */
-    .google .catB {
+    .catB {
         width: auto;
-        height: 80vh;
+        height: calc(var(--svh) * 80);
         position: absolute;
         left: 4vw;
-        top: -30vh;
+        top: calc(var(--svh) * -30);
         z-index: 3;
         transform-origin: bottom center;
         user-select: none;
     }
 
-    .google .cac-logoL {
+    .cac-logoL {
         position: absolute;
-        top: calc(var(--vh)*80);
-        height: calc(var(--vh)*15);
-        width: auto;
-        z-index: 3;
-        left: 50vw;
-        transform: translateX(-50%);
-        display: block !important;
-        visibility: visible !important;
-    }
-
-    /* Safari用のスタイル */
-    .safari .welcome {
-        height: 100svh;
-        overflow: visible;
-    }
-
-    .safari .cac-cat-main {
-        position: absolute;
-        top: 45svh;
-        left: 52vw;
-        height: 65svh;
-        width: auto;
-        z-index: 3;
-        transform: translate(-50%, -50%);
-        user-select: none;
-    }
-
-    .safari .cac-board {
-        position: absolute;
-        width: auto;
-        height: 35svh;
-        z-index: 4;
-        transform-origin: center bottom;
-        user-select: none;
-    }
-
-    .safari .catA {
-        width: auto;
-        height: 50svh;
-        position: absolute;
-        right: 6vw;
-        top: -20svh;
-        z-index: 3;
-        transform-origin: bottom center;
-        user-select: none;
-    }
-
-    .safari .catB {
-        width: auto;
-        height: 80svh;
-        position: absolute;
-        left: 4vw;
-        top: -30svh;
-        z-index: 3;
-        transform-origin: bottom center;
-        user-select: none;
-    }
-
-    .safari .cac-logoL {
-        position: absolute;
-        top: 80svh;
-        height: 15svh;
+        top: calc(var(--svh) * 80);
+        height: calc(var(--svh) * 15);
         width: auto;
         z-index: 3;
         left: 50vw;
@@ -878,39 +529,38 @@ body{
     }
 }
 
-/* タブレット用（横向き表示の時） */
+/* ============================================
+   タブレット用（横向き表示の時）
+   ============================================ */
 @media (min-width:1024px) and (max-height:960px) and (orientation: landscape) {
-    .tablet.google .welcome {
-        height: calc(var(--vh)*100);
+    .tablet .welcome {
+        height: calc(var(--svh) * 100);
         overflow: visible;
     }
 
-    /* メインの猫 */
-    .tablet.google .cac-cat-main {
+    .tablet .cac-cat-main {
         position: absolute;
-        top: calc(var(--vh)*45);
+        top: calc(var(--svh) * 45);
         left: 52vw;
-        height: calc(var(--vh)*55);
+        height: calc(var(--svh) * 55);
         width: auto;
         z-index: 3;
         transform: translate(-50%, -50%);
         user-select: none;
     }
 
-    /* 看板 - メインの猫との相対位置を保持 */
-    .tablet.google .cac-board {
+    .tablet .cac-board {
         position: absolute;
         width: auto;
-        height: calc(var(--vh)*30);
+        height: calc(var(--svh) * 30);
         z-index: 4;
         transform-origin: center bottom;
         user-select: none;
     }
 
-    /* 左側の猫 */
-    .tablet.google .catA {
+    .tablet .catA {
         width: auto;
-        height: calc(var(--vh)*35);
+        height: calc(var(--svh) * 35);
         position: absolute;
         right: 0;
         z-index: 3;
@@ -918,10 +568,9 @@ body{
         user-select: none;
     }
 
-    /* 右側の猫 */
-    .tablet.google .catB {
+    .tablet .catB {
         width: auto;
-        height: calc(var(--vh)*45);
+        height: calc(var(--svh) * 45);
         position: absolute;
         left: 0;
         top: 0;
@@ -930,69 +579,10 @@ body{
         user-select: none;
     }
 
-    .tablet.google .cac-logoL {
+    .tablet .cac-logoL {
         position: absolute;
-        bottom: calc(var(--vh)*5);
-        height: calc(var(--vh)*18);
-        width: auto;
-        z-index: 3;
-        left: 50vw;
-        transform: translateX(-50%);
-        display: block !important;
-        visibility: visible !important;
-    }
-
-    /* Safari用のスタイル */
-    .tablet.safari .welcome {
-        height: 100svh;
-        overflow: visible;
-    }
-
-    .tablet.safari .cac-cat-main {
-        position: absolute;
-        top: 45svh;
-        left: 52vw;
-        height: 55svh;
-        width: auto;
-        z-index: 3;
-        transform: translate(-50%, -50%);
-        user-select: none;
-    }
-
-    .tablet.safari .cac-board {
-        position: absolute;
-        width: auto;
-        height: 30svh;
-        z-index: 4;
-        transform-origin: center bottom;
-        user-select: none;
-    }
-
-    .tablet.safari .catA {
-        width: auto;
-        height: 35svh;
-        position: absolute;
-        right: 0;
-        z-index: 3;
-        transform-origin: bottom center;
-        user-select: none;
-    }
-
-    .tablet.safari .catB {
-        width: auto;
-        height: 45svh;
-        position: absolute;
-        left: 0;
-        top: 0;
-        z-index: 3;
-        transform-origin: bottom center;
-        user-select: none;
-    }
-
-    .tablet.safari .cac-logoL {
-        position: absolute;
-        bottom: 5svh;
-        height: 18svh;
+        bottom: calc(var(--svh) * 5);
+        height: calc(var(--svh) * 18);
         width: auto;
         z-index: 3;
         left: 50vw;
@@ -1001,8 +591,3 @@ body{
         visibility: visible !important;
     }
 }
-
-
-
-
-

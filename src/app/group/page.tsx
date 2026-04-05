@@ -8,7 +8,7 @@ import Scenario from "@/components/group/scenario";
 import Footer from "@/components/main/footer";
 
 
-export default async function Page() {
+export default function Page() {
     return (
         <>
             <GroupHeader></GroupHeader>

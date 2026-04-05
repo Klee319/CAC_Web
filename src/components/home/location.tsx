@@ -7,20 +7,21 @@ export default function Location() {
 
     return (
         <div className="pb-48">
-            <h1 className="text-center location-title text-7xl font-moon">Location & Dates</h1>
+            <h1 className="text-center location-title text-4xl md:text-5xl xl:text-7xl font-moon">Location & Dates</h1>
             <p className="pb-2 text-center">活動場所、日時</p>
             <div className="w-2/3 mx-auto h-0.5 border-color-dark mb-20"></div>
             <div className="flex flex-wrap justify-center w-full">
-                <div>
+                <div className="max-w-full px-4">
                     <ExportedImage
                         src={image}
                         alt="作業風景"
                         width={640}
                         height={360}
                         loading="lazy"
+                        className="w-full h-auto"
                     />
                 </div>
-                <div className="flex-row mx-28 date-content text-center">
+                <div className="flex-row mx-4 sm:mx-10 lg:mx-28 date-content text-center">
                     {schedules.map((schedule, index) => (
                         <div key={schedule.day}>
                             <p className={`text-3xl font-zen-kurenaido ${index === 0 ? 'pt-10' : 'pt-32'} mb-1 date ${index > 0 ? 'top-m' : ''}`}>

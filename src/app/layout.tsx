@@ -1,21 +1,32 @@
-import "./globals.css"; // グローバルCSSの読み込み
+import "./globals.css";
 import { ReactNode } from "react";
-import Head from "next/head";
+import type { Metadata } from "next";
 
+export const metadata: Metadata = {
+    title: "C.A.C. Official Website",
+    description: "デジタル系創作団体 C.A.C. の公式Webサイト",
+    keywords: ["C.A.C.", "京産", "サークル"],
+    authors: [{ name: "C.A.C." }],
+    icons: {
+        icon: [
+            { url: "/favicon/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+            { url: "/favicon/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+        ],
+        apple: "/favicon/apple-touch-icon.png",
+    },
+    manifest: "/site.webmanifest",
+    openGraph: {
+        title: "C.A.C. Official Website",
+        description: "デジタル系創作団体 C.A.C. の公式Webサイト",
+        type: "website",
+    },
+};
 
 export default function RootLayout({ children }: { children: ReactNode }) {
     return (
         <html lang="ja">
         <head>
-            <title>C.A.C. Official Website</title>
-            <link rel="manifest" href="/site.webmanifest" />
-            <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
-            <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
-            <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
-            <meta name="description" content="introduction of C.A.C." />
-            <meta name="keywords" content="C.A.C., 京産, サークル" />
-            <meta name="author" content="C.A.C." />
-            {/* メタデータ */}
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
         </head>
         <body>
             {children}
@@ -23,4 +34,3 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         </html>
     );
 }
-

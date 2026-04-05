@@ -1,6 +1,6 @@
 "use client";
 import { useInstagramImages } from "./useInstagramImages";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 const Gallery = () => {
@@ -8,62 +8,47 @@ const Gallery = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     useEffect(() => {
-        // 画像が取得されていない場合は何もしない
         if (images.length === 0) return;
 
-        // 6秒ごとに画像を切り替えるインターバルを設定
         const interval = setInterval(() => {
             setCurrentIndex((prevIndex) =>
                 prevIndex === images.length - 1 ? 0 : prevIndex + 1
             );
         }, 6000);
 
-        // コンポーネントがアンマウントされたときのクリーンアップ
         return () => clearInterval(interval);
-    }, [images.length]); // currentIndexを依存配列から削除
+    }, [images.length]);
 
-    // ギャラリーの高さを管理するstate
     const [galleryHeight, setGalleryHeight] = useState('80vh');
 
-    // ビューポートの高さを監視し、ギャラリーの高さを調整
-    useEffect(() => {
-        // 初期高さを設定
-        updateGalleryHeight();
+    const updateGalleryHeight = useCallback(() => {
+        if (window.innerWidth <= 1024) {
+            setGalleryHeight('600px');
+        } else {
+            setGalleryHeight('80vh');
+        }
+    }, []);
 
-        // リサイズイベントとスクロールイベントを監視
+    useEffect(() => {
+        updateGalleryHeight();
         window.addEventListener('resize', updateGalleryHeight);
-        window.addEventListener('scroll', updateGalleryHeight);
-        
-        // visibilitychangeイベントも監視（タブの切り替え時など）
-        document.addEventListener('visibilitychange', updateGalleryHeight);
-        
-        // タッチイベントの終了時にも調整（モバイルでのスクロール後）
-        document.addEventListener('touchend', () => {
-            // タッチ操作後に少し遅延させて調整
-            setTimeout(updateGalleryHeight, 300);
-        });
 
         return () => {
             window.removeEventListener('resize', updateGalleryHeight);
-            window.removeEventListener('scroll', updateGalleryHeight);
-            document.removeEventListener('visibilitychange', updateGalleryHeight);
-            document.removeEventListener('touchend', updateGalleryHeight);
         };
-    }, []);
+    }, [updateGalleryHeight]);
 
-    // ギャラリーの高さを更新する関数
-    const updateGalleryHeight = () => {
-        // モバイルデバイスの場合のみ特別な処理
-        if (window.innerWidth <= 1024) {
-            // 固定の高さを設定（ビューポートの高さに依存しない）
-            setGalleryHeight('600px');
-        } else {
-            // PCの場合はビューポートの高さに基づいて設定
-            setGalleryHeight('80vh');
+    // 次の画像をプリロード
+    useEffect(() => {
+        if (images.length <= 1) return;
+        const nextIndex = currentIndex === images.length - 1 ? 0 : currentIndex + 1;
+        const nextImage = images[nextIndex];
+        if (nextImage) {
+            const img = new Image();
+            img.src = nextImage.mediaUrl;
         }
-    };
+    }, [currentIndex, images]);
 
-    // ローディング状態の表示
     if (loading) {
         return (
             <div className="relative w-full flex items-center justify-center" style={{ height: galleryHeight }}>
@@ -72,16 +57,14 @@ const Gallery = () => {
         );
     }
 
-    // エラー状態の表示
     if (error) {
         return (
             <div className="relative w-full flex items-center justify-center" style={{ height: galleryHeight }}>
-                <p className="text-xl text-red-500">Error: {error}</p>
+                <p className="text-xl text-red-500">ギャラリーの読み込みに失敗しました</p>
             </div>
         );
     }
 
-    // 画像がない場合
     if (images.length === 0) {
         return (
             <div className="relative w-full flex items-center justify-center" style={{ height: galleryHeight }}>
@@ -90,7 +73,6 @@ const Gallery = () => {
         );
     }
 
-    // 現在表示する画像
     const image = images[currentIndex];
 
     return (

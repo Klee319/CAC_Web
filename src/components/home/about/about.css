@@ -5,14 +5,13 @@
     }
     .about-text{
         width: 90vw;
-        height: 400px;
-        will-change: transform, opacity;
+        min-height: 300px;
         margin-top: 40px;
     }
     .about-image {
         margin-top: 0;
-        justify-content: center; /* 画像の中央揃え */
-        align-items: center; /* 画像を上下中央揃え */
+        justify-content: center;
+        align-items: center;
         width: 70vw;
         height: auto;
     }
@@ -23,13 +22,10 @@
     }
     .about-text{
         width: 50vw;
-        height: 400px;
+        min-height: 350px;
     }
     .about-image {
         width: 40vw;
         height: auto;
     }
-}
-.hidden {
-    display: none;
 }

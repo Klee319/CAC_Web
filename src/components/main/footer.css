@@ -1,11 +1,10 @@
-/*スマホ*/
 .foot-border{
     height: 1px;
 }
 
 .cac{
     width:auto;
-    height: 7vh;
+    height: clamp(30px, 7vh, 80px);
 }
 
 /* ダークモード時のCACロゴ色反転 */
@@ -19,7 +18,7 @@
 }
 
 .text{
-    font-size: 1.7vw;
+    font-size: clamp(12px, 1.7vw, 24px);
     margin-left: 2vw;
 }
 
@@ -43,7 +42,6 @@
         align-items: center;
     }
 
-    /* アイコンは常に横並びに */
     .social-icons {
         flex-direction: row;
         margin-bottom: 10px;
@@ -77,7 +75,6 @@
         align-items: center;
     }
 
-    /* アイコンは常に横並びに */
     .social-icons {
         flex-direction: row;
         margin-bottom: 10px;
@@ -89,24 +86,4 @@
         margin-left: 0;
         text-align: center;
     }
-}
-
-/* 横向き(Googleからのスマホ・タブレットアクセスを除く)*/
-@media (min-width:428px) and (min-aspect-ratio: 4/3) {
-    /* 既存のスタイルを維持 */
-}
-
-/* タブレット用（縦向き表示の時） */
-@media (min-width:601px) and (max-width:1280px) and (orientation: portrait) {
-    /* 既存のスタイルを維持 */
-}
-
-/* スマホ（横向き表示の時（高さ不足）) */
-@media (max-height: 428px){
-    /* 既存のスタイルを維持 */
-}
-
-/* タブレット用（横向き表示の時） */
-@media (min-width:1024px) and (max-height:960px) and (orientation: landscape) {
-    /* 既存のスタイルを維持 */
 }

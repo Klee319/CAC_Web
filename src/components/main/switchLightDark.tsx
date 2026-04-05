@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 type Props = {
@@ -6,7 +5,6 @@ type Props = {
     toggleMode: () => void;
 };
 
-// 太陽アイコン（ライトモード時に表示 → クリックでダークモードへ）
 const SunIcon = () => (
     <svg
         width="24"
@@ -30,7 +28,6 @@ const SunIcon = () => (
     </svg>
 );
 
-// 月アイコン（ダークモード時に表示 → クリックでライトモードへ）
 const MoonIcon = () => (
     <svg
         width="24"
@@ -50,14 +47,11 @@ export default function SwitchLightDark({ isDarkMode, toggleMode }: Props) {
     return (
         <button
             onClick={toggleMode}
-            className="cursor-pointer p-2 rounded hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
-            aria-label={isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
-            title={isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+            className="cursor-pointer p-2.5 rounded hover:bg-black/5 dark:hover:bg-white/10 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
+            aria-label={isDarkMode ? 'ライトモードに切り替え' : 'ダークモードに切り替え'}
+            title={isDarkMode ? 'ライトモードに切り替え' : 'ダークモードに切り替え'}
         >
             {isDarkMode ? <MoonIcon /> : <SunIcon />}
         </button>
     );
 }
-
-
-

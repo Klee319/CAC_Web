@@ -14,7 +14,7 @@ export default function Welcome({ isDarkMode }: Props) {
             <div className="relative w-full overflow-hidden welcome">
                 <div className="white-layer"></div>
                 <div className="absolute welcome-background"></div>
-                <canvas id="spotlightCanvas"></canvas>
+                <canvas id="spotlightCanvas" aria-hidden="true"></canvas>
 
                 <div className="animation-container">
                     <div className="spotlightL"></div>

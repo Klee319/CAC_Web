@@ -1,5 +1,6 @@
 import "./event.css";
 import React from "react";
+import ExportedImage from "next-image-export-optimizer";
 
 // イベントデータの型定義
 type EventData = {
@@ -21,18 +22,19 @@ const events: EventData[] = [
 ];
 
 // イベントカードコンポーネント
-const EventCard = ({ date, title, image }: EventData) => {
-    // 背景画像のスタイル（画像がある場合のみ設定）
-    const backgroundStyle = image ? {
-        backgroundImage: `url(${image})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-    } : {};
-
+const EventCard = ({ title, image }: EventData) => {
     return (
-        <div className="event-card" style={backgroundStyle}>
-            {/* オーバーレイとテキストを削除 */}
+        <div className="event-card relative">
+            {image && (
+                <ExportedImage
+                    src={image}
+                    alt={title}
+                    fill
+                    className="object-cover rounded-[30px]"
+                    loading="lazy"
+                    sizes="(max-width: 480px) calc(100vw - 3rem), (max-width: 768px) 240px, (max-width: 1024px) 280px, 320px"
+                />
+            )}
         </div>
     );
 };
@@ -42,7 +44,7 @@ export default function Event() {
     return (
         <>
             <div className="text-center">
-                <h1 className="text-7xl font-moon">Event</h1>
+                <h1 className="text-4xl md:text-5xl xl:text-7xl font-moon">Event</h1>
                 <p className="pb-2">行事</p>
                 <div className="w-1/3 mx-auto h-0.5 border-color-dark mb-10"></div>
             </div>

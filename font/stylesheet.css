@@ -1,39 +1,47 @@
 @font-face{
-    font-family: 'athelas'; 
+    font-family: 'athelas';
     src: url("./FontsFree-Net-Athelas1.ttf") format("truetype");
+    font-display: swap;
 }
 
 @font-face{
     font-family: 'xano';
     src: url("./XANO-mincho-U32.ttf") format("truetype");
+    font-display: swap;
 }
 
 @font-face{
     font-family: 'wapuro-mintyo';
     src: url("./wapuro-mincho.otf") format("opentype");
+    font-display: swap;
 }
 
 @font-face{
     font-family: 'poly';
     src: url("./Poly-Regular.ttf") format("truetype");
+    font-display: swap;
 }
 
 @font-face{
     font-family: 'zen';
     src: url("./ZenAntiqueSoft-Regular.ttf") format("truetype");
+    font-display: swap;
 }
 
 @font-face{
     font-family: "moon";
-    src: url("./Moon Light.otf") format("opentype")
+    src: url("./Moon Light.otf") format("opentype");
+    font-display: swap;
 }
 
 @font-face{
     font-family: "hina";
     src: url("./HinaMincho-Regular.ttf") format("truetype");
+    font-display: swap;
 }
 
 @font-face{
     font-family: "zen-kurenaido";
     src: url("./ZenKurenaido-Regular.ttf") format("truetype");
+    font-display: swap;
 }

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import ExportedImage from "next-image-export-optimizer";
 import "./homeHeader.css";
 import SwitchLightDark from '../../main/switchLightDark';
@@ -8,27 +8,23 @@ type Props = {
     toggleMode: () => void;
 };
 
-// メニューアイテムの定義
 const MENU_ITEMS = ["Welcome", "About", "Group", "Location & Dates", "Event", "Gallery"];
 
 export default function HomeHeader({ isDarkMode, toggleMode }: Props) {
-    const [isMenuOpen, setIsMenuOpen] = useState(false); // メニューの開閉状態
-    const toggleMenu = () => setIsMenuOpen(!isMenuOpen); // メニューの開閉をトグル
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const toggleMenu = useCallback(() => setIsMenuOpen(prev => !prev), []);
     const handleLinkClick = () => {
-        setIsMenuOpen(false); // メニューを閉じる
+        setIsMenuOpen(false);
     };
 
-    // URLハッシュに変換する関数
     const getUrlHash = (item: string) => {
         return `#${item.toLowerCase().replace(/ & /g, "-").replace(/\s+/g, "")}`;
     };
 
     return (
         <>
-            {/* ヘッダー */}
             <div className="fixed w-full top-0 left-0 p-3 shadow-md z-50 header">
                 <div className="flex items-center justify-between">
-                    {/* 左側: ロゴとスイッチボタン */}
                     <div className="flex items-center">
                         <div className="cac-logo h-auto w-[80px]">
                             <ExportedImage
@@ -44,9 +40,8 @@ export default function HomeHeader({ isDarkMode, toggleMode }: Props) {
                             <SwitchLightDark isDarkMode={isDarkMode} toggleMode={toggleMode} />
                         </div>
                     </div>
-                    {/* ハンバーガーメニューアイコン (スマホ用) */}
                     <div className="xl:hidden">
-                        <button onClick={toggleMenu} aria-label="Open Menu" className="relative z-50">
+                        <button onClick={toggleMenu} aria-label="メニューを開く" className="relative z-50 min-w-[44px] min-h-[44px] flex items-center justify-center">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
@@ -63,7 +58,6 @@ export default function HomeHeader({ isDarkMode, toggleMode }: Props) {
                             </svg>
                         </button>
                     </div>
-                    {/* PC用ナビゲーションリンク */}
                     <nav className="nav-bar hidden space-x-8 text-2xl font-moon">
                         {MENU_ITEMS.map((item) => (
                             <a
@@ -77,13 +71,13 @@ export default function HomeHeader({ isDarkMode, toggleMode }: Props) {
                     </nav>
                 </div>
             </div>
-            {/* メニュー */}
             <div
                 className={`menu-bar fixed right-0 shadow-lg z-40 transition-all duration-300 ease-in-out overflow-hidden p-1 menu-top ${
                     isMenuOpen ? "translate-y-0 scale-100 opacity-100" : "-translate-y-full scale-80 opacity-90"
                 }`}
                 style={{
                     width: "fit-content",
+                    maxWidth: "100vw",
                     maxHeight: isMenuOpen ? "fit-content" : "0",
                     transformOrigin: "top center"
                 }}
@@ -106,4 +100,3 @@ export default function HomeHeader({ isDarkMode, toggleMode }: Props) {
         </>
     );
 }
-

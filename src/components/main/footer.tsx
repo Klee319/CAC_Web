@@ -6,9 +6,7 @@ import "./footer.css";
 export default function Footer() {
     return (
         <footer className="pb-4 pt-4">
-            {/* フッターのメイン部分 */}
             <div className="flex flex-row items-center justify-around space-y-0">
-                {/* ロゴとタイトル */}
                 <div className="flex items-center logo">
                     <ExportedImage
                         src="/logo/newCAC.png"
@@ -17,13 +15,12 @@ export default function Footer() {
                         height={100}
                         className="cac"
                     />
-                    <p className="font-zen-kurenaido text-color text">©電子計算機応用部</p>
+                    <p className="font-zen-kurenaido text-color text">&copy;電子計算機応用部</p>
                 </div>
 
-                {/* ソーシャルリンク */}
                 <div className="flex items-center social">
                     <div className="flex flex-row items-center social-icons">
-                        <a href="https://www.instagram.com/c_a_c_official" className="mr-4">
+                        <a href="https://www.instagram.com/c_a_c_official" className="mr-4" aria-label="C.A.C.公式Instagramを開く">
                             <ExportedImage
                                 src={insragramSvg}
                                 alt="Instagram"
@@ -32,7 +29,7 @@ export default function Footer() {
                                 className="scale-100 hover:scale-125 transition-transform insta-logo"
                             />
                         </a>
-                        <a href="https://twitter.com/c_a_c_official">
+                        <a href="https://twitter.com/c_a_c_official" aria-label="C.A.C.公式Xを開く">
                             <ExportedImage
                                 src={XSvg}
                                 alt="X"

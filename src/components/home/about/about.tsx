@@ -52,7 +52,6 @@ export default function About() {
     const [pageIndex, setPageIndex] = useState(0);
     const [direction, setDirection] = useState(1);
 
-    // アニメーションのバリアント定義
     const variants = {
         enter: (direction: number) => ({
             x: direction > 0 ? 100 : -100,
@@ -65,7 +64,6 @@ export default function About() {
         }),
     };
 
-    // 次のページへ移動
     const nextPage = () => {
         setDirection(1);
         setPageIndex((prevIndex) =>
@@ -73,7 +71,6 @@ export default function About() {
         );
     };
 
-    // 前のページへ移動
     const prevPage = () => {
         setDirection(-1);
         setPageIndex((prevIndex) =>
@@ -84,7 +81,7 @@ export default function About() {
     return (
         <div className="pb-48 max-w-7xl mx-auto px-4">
             <div className="text-center mb-8">
-                <h1 className="text-7xl font-moon">About</h1>
+                <h1 className="text-4xl md:text-5xl xl:text-7xl font-moon">About</h1>
                 <p className="pb-2">C.A.C.について</p>
                 <div className="w-1/3 mx-auto h-0.5 border-color-dark mb-10"></div>
             </div>
@@ -102,12 +99,13 @@ export default function About() {
                 </div>
                 {/* テキスト部分 */}
                 <div className="flex flex-row items-center justify-between about-text">
-                    <div
+                    <button
                         onClick={prevPage}
-                        className="text-4xl cursor-pointer mr-1.5 nextButton"
+                        className="text-4xl cursor-pointer mr-1.5 nextButton min-w-[44px] min-h-[44px] flex items-center justify-center"
+                        aria-label="前のページ"
                     >
                         &#60;
-                    </div>
+                    </button>
                     <div className="relative w-[85%]">
                         <AnimatePresence initial={false} custom={direction} mode="wait">
                             <motion.div
@@ -133,12 +131,13 @@ export default function About() {
                             </motion.div>
                         </AnimatePresence>
                     </div>
-                    <div
+                    <button
                         onClick={nextPage}
-                        className="text-4xl cursor-pointer nextButton"
+                        className="text-4xl cursor-pointer nextButton min-w-[44px] min-h-[44px] flex items-center justify-center"
+                        aria-label="次のページ"
                     >
                         &#62;
-                    </div>
+                    </button>
                 </div>
             </div>
         </div>

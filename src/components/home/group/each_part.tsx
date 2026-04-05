@@ -1,6 +1,5 @@
 import ExportedImage from 'next-image-export-optimizer';
 
-// EachPartコンポーネントのプロパティの型定義
 interface EachPartProps {
     group: string;
     omit: string;
@@ -9,7 +8,6 @@ interface EachPartProps {
     image: string;
 }
 
-// 型定義を利用したEachPartコンポーネント
 export default function EachPart({ group, omit, description, link, image }: EachPartProps) {
     return (
         <div className="relative group m-8">
@@ -23,12 +21,12 @@ export default function EachPart({ group, omit, description, link, image }: Each
                 alt={group}
                 width={550}
                 height={310}
-                className="w-full h-full object-cover transition-transform transform group-hover:scale-105 "
+                className="w-full h-full object-cover transition-transform transform group-hover:scale-105"
                 loading="lazy"
             />
-            <a href={link} target="_blank" rel="noopener noreferrer">
-                <div className="absolute inset-0 bg-gray-900 bg-opacity-0 group-hover:bg-opacity-50 "></div>
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-white opacity-0 group-hover:opacity-100 ">
+            <a href={link} target="_blank" rel="noopener noreferrer" aria-label={`${omit}班の詳細を見る（外部リンク）`}>
+                <div className="absolute inset-0 bg-gray-900 bg-opacity-0 group-hover:bg-opacity-50 active:bg-opacity-50"></div>
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-white opacity-0 group-hover:opacity-100 active:opacity-100">
                     <p className="text-center text-2xl font-zen-kurenaido">{omit}班の詳細を見る</p>
                 </div>
             </a>
@@ -36,4 +34,3 @@ export default function EachPart({ group, omit, description, link, image }: Each
         </div>
     );
 }
-
