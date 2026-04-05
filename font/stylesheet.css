@@ -1,47 +1,55 @@
 @font-face{
     font-family: 'athelas';
-    src: url("./FontsFree-Net-Athelas1.ttf") format("truetype");
+    src: url("./FontsFree-Net-Athelas1.woff2") format("woff2"),
+         url("./FontsFree-Net-Athelas1.ttf") format("truetype");
     font-display: swap;
 }
 
 @font-face{
     font-family: 'xano';
-    src: url("./XANO-mincho-U32.ttf") format("truetype");
+    src: url("./XANO-mincho-U32.woff2") format("woff2"),
+         url("./XANO-mincho-U32.ttf") format("truetype");
     font-display: swap;
 }
 
 @font-face{
     font-family: 'wapuro-mintyo';
-    src: url("./wapuro-mincho.otf") format("opentype");
+    src: url("./wapuro-mincho.woff2") format("woff2"),
+         url("./wapuro-mincho.otf") format("opentype");
     font-display: swap;
 }
 
 @font-face{
     font-family: 'poly';
-    src: url("./Poly-Regular.ttf") format("truetype");
+    src: url("./Poly-Regular.woff2") format("woff2"),
+         url("./Poly-Regular.ttf") format("truetype");
     font-display: swap;
 }
 
 @font-face{
     font-family: 'zen';
-    src: url("./ZenAntiqueSoft-Regular.ttf") format("truetype");
+    src: url("./ZenAntiqueSoft-Regular.woff2") format("woff2"),
+         url("./ZenAntiqueSoft-Regular.ttf") format("truetype");
     font-display: swap;
 }
 
 @font-face{
     font-family: "moon";
-    src: url("./Moon Light.otf") format("opentype");
+    src: url("./Moon Light.woff2") format("woff2"),
+         url("./Moon Light.otf") format("opentype");
     font-display: swap;
 }
 
 @font-face{
     font-family: "hina";
-    src: url("./HinaMincho-Regular.ttf") format("truetype");
+    src: url("./HinaMincho-Regular.woff2") format("woff2"),
+         url("./HinaMincho-Regular.ttf") format("truetype");
     font-display: swap;
 }
 
 @font-face{
     font-family: "zen-kurenaido";
-    src: url("./ZenKurenaido-Regular.ttf") format("truetype");
+    src: url("./ZenKurenaido-Regular.woff2") format("woff2"),
+         url("./ZenKurenaido-Regular.ttf") format("truetype");
     font-display: swap;
 }
