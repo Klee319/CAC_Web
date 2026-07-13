@@ -97,6 +97,12 @@ body.safari {
     position: absolute;
 }
 
+/* JSでtransformを毎フレーム更新する要素を合成レイヤーに昇格し、
+   再ペイント/リフローのコストを抑えてアニメーションを滑らかにする */
+.catA, .catB, .cac-board {
+    will-change: transform;
+}
+
 
 /* ============================================
    スマホ（〜428px）

@@ -200,6 +200,13 @@ export default function WelcomeJS({ isDarkMode }: Props) {
     // IntersectionObserver用: welcomeセクションが表示中かどうか
     const isVisibleRef = useRef(true);
 
+    // rAFループ内から最新のisDarkModeを参照するためのref（レンダー毎に同期）
+    const isDarkModeRef = useRef(isDarkMode);
+    isDarkModeRef.current = isDarkMode;
+
+    // boardの直近位置（静止時の無駄なスタイル書き込みを避ける差分検出用）
+    const lastBoardPosRef = useRef<{ x: number; y: number }>({ x: NaN, y: NaN });
+
     // DOM要素をキャッシュする関数
     const cacheElements = useCallback(() => {
         elementsRef.current = {
@@ -235,6 +242,8 @@ export default function WelcomeJS({ isDarkMode }: Props) {
     }, []);
 
     // 要素の位置を更新する関数
+    // レイアウトスラッシングを避けるため「読み取り(getBoundingClientRect)」を先に
+    // まとめて行い、その後「書き込み(style)」をまとめて適用する。
     const updatePosition = useCallback(() => {
         let { board, catMain, catA, catB, spotlightL, spotlightR } = elementsRef.current;
 
@@ -243,38 +252,49 @@ export default function WelcomeJS({ isDarkMode }: Props) {
             ({ board, catMain, catA, catB, spotlightL, spotlightR } = elementsRef.current);
         }
 
-        const { isMobileOrTablet } = getDeviceInfo();
         const deviceKey = getDeviceConfigKey();
         const config = typedConfig[deviceKey];
 
-        if (catA && spotlightR && config) {
-            const catARect = catA.getBoundingClientRect();
+        // スポットライトはダークモード時のみ描画されるため、それ以外では
+        // 位置追従の読み取り・書き込み自体をスキップする。
+        const spotlightsActive = isDarkModeRef.current;
+
+        // --- 読み取りフェーズ: レイアウト情報をまとめて取得 ---
+        const catARect = spotlightsActive && catA && spotlightR && config
+            ? catA.getBoundingClientRect() : null;
+        const catBRect = spotlightsActive && catB && spotlightL && config
+            ? catB.getBoundingClientRect() : null;
+        const catMainRect = catMain && board ? catMain.getBoundingClientRect() : null;
+
+        // --- 書き込みフェーズ: スタイル更新をまとめて適用 ---
+        if (catARect && spotlightR && config) {
             const spotlightRConfig = config.spotlightR;
             spotlightR.style.top = `${catARect.bottom - catARect.height * 0.5 + spotlightRConfig.offsetTop}px`;
             spotlightR.style.right = `${spotlightRConfig.offsetRight ?? 0}px`;
         }
 
-        if (catB && spotlightL && config) {
-            const catBRect = catB.getBoundingClientRect();
+        if (catBRect && spotlightL && config) {
             const spotlightLConfig = config.spotlightL;
             spotlightL.style.top = `${catBRect.bottom - catBRect.height * 0.5 + spotlightLConfig.offsetTop}px`;
             spotlightL.style.left = `${spotlightLConfig.offsetLeft ?? 0}px`;
         }
 
-        if (!catMain || !board) return;
+        if (catMainRect && board) {
+            const handX = window.scrollX + catMainRect.left - catMainRect.width * 0.04;
+            const handY = window.scrollY + catMainRect.top + catMainRect.height * 0.25;
 
-        const rect = catMain.getBoundingClientRect();
-        const handX = window.scrollX + rect.left - rect.width * 0.04;
-        const handY = window.scrollY + rect.top + rect.height * 0.25;
-
-        board.style.left = `${handX}px`;
-        board.style.top = `${handY}px`;
-
-        if (isMobileOrTablet) {
-            board.style.transformOrigin = 'center bottom';
+            // catMainは静止要素のため、位置が変わった時だけ書き込む
+            const last = lastBoardPosRef.current;
+            if (handX !== last.x || handY !== last.y) {
+                board.style.left = `${handX}px`;
+                board.style.top = `${handY}px`;
+                lastBoardPosRef.current = { x: handX, y: handY };
+            }
         }
 
-        updateSpotlightPositions();
+        if (spotlightsActive) {
+            updateSpotlightPositions();
+        }
     }, [updateSpotlightPositions, cacheElements]);
 
     // ボードのアニメーション（クリーンアップ付き）
